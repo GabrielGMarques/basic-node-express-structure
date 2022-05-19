@@ -1,19 +1,19 @@
-const Express = require('express');
-const BodyParser = require('body-parser');
-const Mongoose = require('mongoose');
-const Cors = require('cors');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-const app = Express();
-app.use(Express.json());
-app.use(BodyParser.json());
-app.use(Cors({
+const app = express();
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors({
   origin: true,
   credentials: true
 }));
 
 app.use('/api/decks', require('./routes/deck')); 
 
-Mongoose
+mongoose
   .connect('mongodb://localhost:27017/crud-node-mongo-docker', {
     useNewUrlParser: true
   })
