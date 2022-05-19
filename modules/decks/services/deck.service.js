@@ -1,5 +1,4 @@
 const Deck = require('../../../entities/deck');
-const mongoose = require('mongoose');
 
 class DeckService {
 

@@ -1,14 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const userMiddleware = require('../../auth/middlewares/auth.middleware');
+const Express = require('express');
+const Router = Express.Router();
+const AuthMiddleware = require('../../auth/middlewares/auth.middleware');
 
 const DeckService = require('../services/deck.service');
 
-router.get('/:mindMapId',
-  userMiddleware.GetSessionUser,
+Router.get('/:mindMapId',
+  AuthMiddleware.GetSessionUser,
   async (req, res) => {
     const decks = await DeckService.GetUserDecks(res.locals.userId);
     res.json(decks);
   });
   
-module.exports = router;
+module.exports = Router;

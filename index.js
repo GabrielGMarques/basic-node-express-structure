@@ -1,38 +1,19 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const cors = require('cors');
+const Express = require('express');
+const BodyParser = require('body-parser');
+const Mongoose = require('mongoose');
+const Cors = require('cors');
 
-const app = express();
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(session(
-    {
-      secret: '1234567890',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: 'auto',
-        httpOnly: true,
-        maxAge: 3600000
-      }
-    })
-  );
-
-app.use(cors({
+const app = Express();
+app.use(Express.json());
+app.use(BodyParser.json());
+app.use(Cors({
   origin: true,
   credentials: true
 }));
 
-app.use('/user', require('./modules/auth/routes/user'));
-app.use('/login', require('./modules/auth/routes/login'));
-app.use('/oauth-callback', require('./modules/auth/routes/oauth-callback'));
+app.use('/api/decks', require('./routes/deck')); 
 
-app.use('/api/root', require('./routes/root')); 
-app.use('/api/deck', require('./routes/deck')); 
-
-mongoose
+Mongoose
   .connect('mongodb://localhost:27017/crud-node-mongo-docker', {
     useNewUrlParser: true
   })

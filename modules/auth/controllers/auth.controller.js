@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const Express = require('express');
+const Router = Express.Router();
 
-router.post('/signin', (req, res) => {
+Router.post('/signin', (req, res) => {
   // authenticate user
 });
 
-module.exports = router;
+module.exports = Router;

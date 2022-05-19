@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const Express = require('E');
+const Router = Express.Router();
 
-router.get('/', (req, res) => {
+Router.get('/', (req, res) => {
   return res.send("Not implemented");
 });
 
-module.exports = router;
+module.exports = Router;
